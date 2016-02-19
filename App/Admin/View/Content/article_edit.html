@@ -1,0 +1,50 @@
+<div id="<{:html_id('panel')}>" class="easyui-panel" data-options="fit:true,border:false" title="<{$title}>" data-href="<{:U(CONTROLLER_NAME . '/' . ACTION_NAME, array('catid'=>I('get.catid'),'type'=>I('get.type'),'field'=>I('get.field'), 'id'=>I('get.id')))}>" data-back="<{:I('get.reopen_from', '#', 'urldecode')}>">
+	<div class="easyui-layout" data-options="fit:true,border:false">
+		<div data-options="region:'north',border:false" style="padding:1px;background-color:#efefef;">
+			<a href="javascript:;" class="easyui-linkbutton toolbar-handle" data-handle="save" data-options="iconCls:'fa fa-floppy-o',plain:true">保存</a>
+			<a href="javascript:;" class="easyui-linkbutton toolbar-handle" data-handle="refresh" data-options="iconCls:'fa fa-refresh',plain:true">刷新</a>
+			<a href="javascript:;" class="easyui-linkbutton toolbar-handle" data-handle="back" data-options="iconCls:'fa fa-reply',plain:true">返回</a>
+		</div>
+
+		<div data-options="region:'center',border:true" style="border-left:none;border-bottom:none;">
+			<div class="easyui-tabs" data-options="fit:true,border:false">
+				<div title="基本信息" data-options="cache:false">
+					<form class="content-form-page form" data-group="base">
+						<table cellspacing="0" cellpadding="0" border="0" width="100%" align="center">
+							<tr>
+								<th width="30">标题</th>
+								<td>
+									<input class="easyui-validatebox required" name="title" value="<{$info.title}>" data-options="required:true,validType:{length:[1,200]}" type="text" style="width:99%;" />
+								</td>
+							</tr>
+							<tr>
+								<th>正文</th>
+								<td>
+									<textarea class="editor required" name="content" id="<{:html_id('editor-content')}>" data-type="editor" data-editor="<{:html_id('editor-content')}>" data-height="300"><{$info.content|htmlspecialchars_decode}></textarea>
+								</td>
+							</tr>
+							<tr>
+								<th>摘要</th>
+								<td>
+									<textarea class="editor" name="description" id="<{:html_id('editor-intro')}>" data-type="editor" data-editor="<{:html_id('editor-intro')}>" data-height="100" data-limit="200" data-toolbar="mini"><{$info.description|htmlspecialchars_decode}></textarea>
+								</td>
+							</tr>
+						</table>
+						<input type="hidden" name="id" value="<{$Think.get.id}>">
+					</form>
+				</div>
+
+			</div>
+		</div>
+
+		<div data-options="region:'east',split:true,border:true" title="属性" style="width:280px;border-bottom:none;border-right:none;">
+			<table class="propertygrid" data-group="base" data-url="<{:U(CONTROLLER_NAME . '/' . ACTION_NAME, array('grid'=>'propertygrid', 'catid'=>I('get.catid'),'type'=>I('get.type'),'field'=>I('get.field'), 'id'=>I('get.id')))}>"></table>
+		</div>
+
+	</div>
+</div>
+<script type="text/javascript">
+	require(['content/article_operate'], function(module){
+		module.init("#<{:html_id('panel')}>");
+	});
+</script>

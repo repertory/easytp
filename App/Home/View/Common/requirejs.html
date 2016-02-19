@@ -1,0 +1,18 @@
+<!-- require.js -->
+<script type="text/javascript" src="__STATIC__/js/require.js?__VERSION__"></script>
+<script type="text/javascript">
+	require.config({
+		baseUrl: "__STATIC__/module/home/",
+		urlArgs: '__VERSION__',
+		paths: {
+			'jquery': '../../js/jquery.min',
+			'semantic': '../../js/semantic/semantic.min'
+		},
+		shim: {
+			'semantic': {
+				deps: ['jquery'],
+				exports: '$'
+			}
+		}
+	});
+</script>

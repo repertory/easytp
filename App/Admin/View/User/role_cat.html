@@ -1,0 +1,16 @@
+<table id="<{:html_id('treegrid')}>" data-toolbar="#<{:html_id('treegrid-toolbar')}>" data-url="<{:U(CONTROLLER_NAME . '/' . ACTION_NAME, array('grid'=>'treegrid', 'roleid'=>I('get.id')))}>">
+	<thead>
+	<tr>
+		<th data-options="field:'catid',width:30">ID</th>
+		<th data-options="field:'catname',width:120">栏目名称</th>
+		<th data-options="field:'type',width:50">类型</th>
+		<th data-options="field:'auth',width:250">权限设置</th>
+	</tr>
+	</thead>
+</table>
+
+<!--工具栏-->
+<div id="<{:html_id('treegrid-toolbar')}>">
+	<a class="easyui-linkbutton toolbar-handle" data-handle="collapseAll" iconCls="fa fa-folder-o" plain="true">收起</a>
+	<a class="easyui-linkbutton toolbar-handle" data-handle="expandAll" iconCls="fa fa-folder-open-o" plain="true">展开</a>
+</div>

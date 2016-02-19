@@ -1,0 +1,160 @@
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="left sliding">
+			<i class="icon icon-back"></i>&nbsp;
+			<a href="#" class="link back">返回</a>
+		</div>
+		<div class="center">系统参数设置</div>
+		<div class="right">
+			<a class="link easytp-step2-next">下一步</a>
+		</div>
+	</div>
+</div>
+
+<div class="pages navbar-through">
+	<div class="page" data-page="index-install-step2">
+
+
+		<div class="page-content">
+			<form id="step2-form" action="<{:U('Index/step2')}>" method="POST" class="ajax-submit">
+				<div class="list-block">
+					<div class="list-group">
+						<ul>
+							<li class="list-group-title">数据库配置</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据库类型</div>
+										<div class="item-input">
+											<select name="DB_TYPE" class="valid" tip="请设置数据库类型" required="required">
+												<option value="mysql">mysql</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据库主机</div>
+										<div class="item-input">
+											<input type="text" name="DB_HOST" value="<{:C('DB_HOST')}>" placeholder="请输入主机地址" class="valid" tip="请输入主机地址" required="required">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">端口</div>
+										<div class="item-input">
+											<input type="text" name="DB_PORT" value="<{:C('DB_PORT', null, 3306)}>" placeholder="默认为3306" class="valid" tip="请输入端口" pattern="^[1-9][0-9]*$">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据库帐号</div>
+										<div class="item-input">
+											<input type="text" name="DB_USER" value="<{:C('DB_USER')}>" placeholder="请输入数据库帐号" class="valid" tip="请输入数据库帐号" required="required">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据库密码</div>
+										<div class="item-input">
+											<input type="password" name="DB_PWD" value="<{:C('DB_PWD')}>" placeholder="请输入数据库密码" class="valid" tip="请输入数据库密码">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据库名称</div>
+										<div class="item-input">
+											<input type="text" name="DB_NAME" value="<{:C('DB_NAME')}>" placeholder="请输入数据库名称" class="valid" tip="请输入数据库名称" required="required">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-database"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">数据表前缀</div>
+										<div class="item-input">
+											<input type="text" name="DB_PREFIX" value="<{:C('DB_PREFIX')}>" placeholder="请输入数据表前缀" class="valid" tip="请输入数据表前缀">
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+					<div class="list-group">
+						<ul>
+							<li class="list-group-title">管理员设置</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-user"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">管理员帐号</div>
+										<div class="item-input">
+											<input type="text" name="username" value="wangdong" placeholder="请输入帐号" class="valid" tip="请输入管理员帐号" required="required" maxlength="21" minlength="5">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-lock"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">管理员密码</div>
+										<div class="item-input">
+											<input id="step2-password-input" type="password" name="password" value="wangdong" placeholder="请输入密码" class="valid" tip="请输入管理员密码" required="required" maxlength="21" minlength="5">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-shield"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">确认密码</div>
+										<div class="item-input">
+											<input type="password" name="pwdconfirm" value="wangdong" placeholder="请输入确认密码" class="valid" tip="两次密码不一致" required="required" confirm="#step2-password-input">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="item-content">
+									<div class="item-media"><i class="fa fa-envelope"></i></div>
+									<div class="item-inner">
+										<div class="item-title label">管理员邮箱</div>
+										<div class="item-input">
+											<input type="text" name="email" value="admin@admin.com" placeholder="请输入邮箱" class="valid" tip="请输入邮箱" required="required" pattern="^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$">
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,18 @@
+<!--datagrid列表-->
+<table id="<{:html_id('propertygrid')}>" data-toolbar="#<{:html_id('propertygrid-toolbar')}>" data-title="<{$title}>" data-url="<{:U(CONTROLLER_NAME . '/' . ACTION_NAME, array('grid'=>'propertygrid'))}>"></table>
+
+<!--工具栏-->
+<div id="<{:html_id('propertygrid-toolbar')}>">
+	<!--操作项-->
+	<foreach name="toolbars" item="li">
+		<a class="easyui-linkbutton toolbar-action" data-action="<{$li.a}>" iconCls="<{$li.icon}>" plain="true" data-href="<{:U($li['c'] . '/' . $li['a'] . '?' . $li['data'])}>"><{$li.name}></a>
+	</foreach>
+
+	<a class="easyui-linkbutton toolbar-handle" data-handle="refresh" iconCls="fa fa-refresh" plain="true">刷新</a>
+</div>
+
+<script type="text/javascript">
+	require(['system/setting'], function(module){
+		module.init("#<{:html_id('propertygrid')}>");
+	});
+</script>

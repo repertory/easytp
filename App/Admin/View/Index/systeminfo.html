@@ -1,0 +1,46 @@
+<div class="easyui-tabs" data-options="fit:true,border:false">
+	<div title="系统信息">
+		<table class="easyui-propertygrid"  data-options="fit:true,border:false,scrollbarSize:0,columns:[[{field:'name',title:'属性',width:100},{field:'value',title:'参数',width:250}]],data: [
+		{name:'服务器域名/IP地址', value:'<{$_SERVER['SERVER_NAME']}>(<if condition="DIRECTORY_SEPARATOR eq '/'"><{$_SERVER['SERVER_ADDR']}><else/><{:@gethostbyname($_SERVER['SERVER_NAME'])}></if>)'},
+		{name:'服务器标识', value:<if condition="$sysinfo['win_n'] neq ''"><{:var_export($sysinfo['win_n'], true)}><else/><{:var_export(@php_uname(), true)}></if>},
+		{name:'服务器操作系统', value:<{:var_export($os[0] . '&nbsp;内核版本：' . (DIRECTORY_SEPARATOR == '/' ? $os[2] : $os[1]) , true)}>},
+		{name:'服务器解译引擎', value:<{:var_export($_SERVER['SERVER_SOFTWARE'], true)}>},
+		{name:'服务器语言', value:<{:var_export(getenv('HTTP_ACCEPT_LANGUAGE'), true)}>},
+		{name:'服务器端口', value:'<{$_SERVER['SERVER_PORT']}>'},
+		{name:'服务器主机名', value:<{:var_export(DIRECTORY_SEPARATOR == '/' ? $os[1] : $os[2] , true)}>},
+		{name:'管理员邮箱', value:'<{$_SERVER['SERVER_ADMIN']}>'},
+		{name:'绝对路径', value:<{:var_export(SITE_DIR, true)}>},
+		{name:'上传文件最大限制', value:'（upload_max_filesize）：<{:get_cfg_var('upload_max_filesize')}>'}
+		]"></table>
+	</div>
+
+	<eq name="sysinfo.sysReShow" value="show">
+		<div title="实时数据">
+			<div id="index-system-info-dialog-tabs" style="line-height: 1.7;padding: 5px 10px;">
+				服务器当前时间：<span><{$sysinfo.stime}></span> <br />
+				服务器已运行时间：<span><{$sysinfo.uptime}></span> <br />
+				总空间：<{$sysinfo.DiskTotal}>&nbsp;GB &nbsp;&nbsp;&nbsp;&nbsp;<span title="显示的是网站所在的目录的可用空间，非服务器上所有磁盘之可用空间！">可用空间</span>： <font color='#CC0000'><span><{$sysinfo.freeSpace}></span></font>&nbsp;GB<br />
+				CPU型号 [<{$sysinfo.cpu.num}>核]：<{$sysinfo.cpu.model}> <br />
+				内存使用状况：物理内存：共<font color='#CC0000'><{$sysinfo.TotalMemory}></font>, 已用<font color='#CC0000'><span><{$sysinfo.UsedMemory}></span></font>, 空闲<font color='#CC0000'><span><{$sysinfo.FreeMemory}></span></font>, 使用率<span><{$sysinfo.memPercent}></span> <br />
+				<div class="bar"><div class="barli_green" style="width:<{$sysinfo.memPercent}>">&nbsp;</div> </div>
+				<if condition="$sysinfo['CachedMemory'] gt 0">
+					Cache化内存为 <span><{$sysinfo.CachedMemory}></span>, 使用率<span><{$sysinfo.memCachedPercent}></span> %	| Buffers缓冲为  <span><{$sysinfo.Buffers}></span>
+					<div class="bar"><div class="barli_blue" style="width:<{$sysinfo.barmemCachedPercent}>">&nbsp;</div></div>
+					真实内存使用 <span><{$sysinfo.memRealUsed}></span>, 真实内存空闲<span><{$sysinfo.memRealFree}></span>, 使用率<span><{$sysinfo.memRealPercent}></span> %
+					<div class="bar_1"><div class="barli_1" style="width:<{$sysinfo.barmemRealPercent}>">&nbsp;</div></div>
+				</if>
+				<if condition="$sysinfo['TotalSwap'] gt 0">
+					SWAP区：共<{$sysinfo.TotalSwap}>, 已使用<span><{$sysinfo.swapUsed}></span>, 空闲<span><{$sysinfo.swapFree}></span>, 使用率<span><{$sysinfo.swapPercent}></span> %
+					<div class="bar"><div class="barli_red" style="width:<{$sysinfo.barswapPercent}>">&nbsp;</div> </div>
+				</if>
+				系统平均负载：<span><{$sysinfo.loadAvg}></span>
+			</div>
+		</div>
+	</eq>
+
+	<neq name="net_state" value="">
+		<div title="网络情况" style="line-height: 1.7;padding: 5px 10px;">
+			<{$net_state}>
+		</div>
+	</neq>
+</div>

@@ -1,0 +1,52 @@
+<form class="dialog-form-page">
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr>
+			<td width="80">上级栏目：</td>
+			<td><input class="easyui-combotree" data-options="url:'<{:U('Category/public_categorySelect')}>'" type="text" name="info[parentid]" value="<{$info.parentid}>" style="width:230px;height:24px" /></td>
+		</tr>
+		<tr>
+			<td>栏目名称：</td>
+			<td><input class="easyui-validatebox" data-options="required:true,validType:{length:[0,20]}" type="text" name="info[catname]" value="<{$info.catname}>" style="width:220px" /></td>
+		</tr>
+		<tr>
+			<td>栏目类型：</td>
+			<td>
+				<select name="info[type]" class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" style="width:230px;height:24px">
+					<foreach name="typeList" item="type" key="key">
+						<if condition="is_array($type['son'])">
+							<optgroup label="<{$type.name}>">
+								<foreach name="type.son" item="type2" key="key2">
+									<option value="<{$key2}>" <eq name="info.type" value="$key2">selected</eq>><{$type2.name}></option>
+								</foreach>
+							</optgroup>
+						<else/>
+							<option value="<{$key}>" <eq name="info.type" value="$key">selected</eq>><{$type.name}></option>
+						</if>
+					</foreach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>栏目描述：</td>
+			<td><textarea class="easyui-validatebox" data-options="validType:{length:[0,200]}" name="info[description]" style="width:220px;height:60px;font-size:12px"><{$info.description}></textarea></td>
+		</tr>
+		<tr>
+			<td>排序：</td>
+			<td><input class="easyui-numberbox" type="text" name="info[listorder]" value="<{$info.listorder}>" data-options="min:0,precision:0" style="width:230px;height:24px" /></td>
+		</tr>
+		<tr>
+			<td>图标：</td>
+			<td><input type="text" name="info[icon]" value="<{$info.icon}>" style="width:220px"/></td>
+		</tr>
+		<tr>
+			<td>是否启用：</td>
+			<td>
+				<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" name="info[status]" style="width:230px;height:24px">
+					<option value="1" <eq name="info.status" value="1">selected</eq>>启用</option>
+					<option value="0" <eq name="info.status" value="0">selected</eq>>禁用</option>
+				</select>
+			</td>
+		</tr>
+	</table>
+	<input name="info[catid]" value="<{$info.catid}>" type="hidden"/>
+</form>

@@ -1,0 +1,7 @@
+<ul class="easyui-tree <{:html_id('tree', 'CLASS')}>" data-options='animate:true,lines:true,data:<{:json_encode($data)}>'></ul>
+
+<script type="text/javascript">
+	require(['index/left'], function(module){
+		module.init("<{:html_id('tree', '.CLASS')}>");
+	});
+</script>

@@ -1,0 +1,34 @@
+<!-- require.js -->
+<script type="text/javascript" src="__STATIC__/js/require.js?__VERSION__"></script>
+<script type="text/javascript">
+	window.UEDITOR_HOME_URL   = '__STATIC__/js/ueditor/';
+	window.UEDITOR_SERVER_URL = '<{:U('Upload/ueditor')}>';
+	require.config({
+		baseUrl: "__STATIC__/module/admin/",
+		urlArgs: '__VERSION__',
+		waitSeconds: 0,
+		paths: {
+			'jquery':                '../../js/jquery.min',
+			'jquery.easyui':         '../../js/easyui/jquery.easyui.min',
+			'jquery.easyui.portal':  '../../js/easyui/plugins/jquery.portal',
+			'jquery.easyui.lang':    '../../js/easyui/locale/easyui-lang-zh_CN',
+			'jquery.easyui.app':     '../../js/jquery.easyui.app',
+			'jquery.venobox':        '../../js/venobox/venobox.min',
+			'jquery.croppic':        '../../js/croppic/croppic',
+			'editor':                '../../js/ueditor/ueditor.require',
+			'editor.zeroclipboard':  '../../js/ueditor/third-party/zeroclipboard/ZeroClipboard.min'
+		},
+		shim: {
+			'jquery.venobox':      {deps: ['jquery']},
+			'jquery.croppic':      {deps: ['jquery']},
+			'jquery.easyui':       {deps: ['jquery']},
+			'jquery.easyui.lang':  {deps: ['jquery', 'jquery.easyui']},
+			'jquery.easyui.portal':{deps: ['jquery', 'jquery.easyui', 'jquery.easyui.lang']},
+			'jquery.easyui.app': {
+				deps: ['jquery', 'jquery.easyui', 'jquery.easyui.portal', 'jquery.easyui.lang', 'jquery.venobox', 'jquery.croppic'],
+				exports: '$'
+			},
+			'editor':              {deps: ['../../js/ueditor/ueditor.config', 'editor.zeroclipboard']}
+		}
+	});
+</script>

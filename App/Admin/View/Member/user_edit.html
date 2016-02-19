@@ -1,0 +1,51 @@
+<form class="dialog-form-page">
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr>
+			<td width="90">用户分类：</td>
+			<td>
+				<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" name="info[typeid]" style="width:230px;height:24px">
+					<foreach name="typelist" key="typeid" item="typename">
+						<option value="<{$typeid}>" <eq name="info.typeid" value="$typeid">selected</eq>><{$typename}></option>
+					</foreach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>用户名：</td>
+			<td><input class="easyui-validatebox"  type="text" value="<{$info.username}>" readonly style="width:220px" /></td>
+		</tr>
+		<tr>
+			<td>手机：</td>
+			<td><input class="easyui-validatebox" data-options="required:true,validType:['number', 'length[11,11]','remote[\'<{:U('Member/public_checkMobile', array('default'=>$info['mobile']))}>\',\'mobile\']']" type="text" name="info[mobile]" value="<{$info.mobile}>" style="width:220px" /></td>
+		</tr>
+		<tr>
+			<td>性别：</td>
+			<td>
+				<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" name="info[gender]" style="width:230px;height:24px">
+					<foreach name="dict.gender" key="val" item="text">
+						<option value="<{$val}>" <eq name="info.gender" value="$val">selected</eq>><{$text}></option>
+					</foreach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>昵称：</td>
+			<td><input class="easyui-validatebox" data-options="required:true,validType:['length[2,50]','remote[\'<{:U('Member/public_checkNick', array('default'=>$info['nick']))}>\',\'nick\']']" type="text" name="info[nick]" value="<{$info.nick}>" style="width:220px" /></td>
+		</tr>
+		<tr>
+			<td>星座：</td>
+			<td>
+				<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" name="info[constellation]" style="width:230px;height:24px">
+					<foreach name="dict.constellation" key="val" item="text">
+						<option value="<{$val}>" <eq name="info.constellation" value="$val">selected</eq>><{$text}></option>
+					</foreach>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>备注：</td>
+			<td><textarea class="easyui-validatebox" data-options="validType:{length:[0,500]}" name="info[remark]" style="width:220px;height:60px;font-size:12px"><{$info.remark}></textarea></td>
+		</tr>
+	</table>
+	<input name="info[memberid]" value="<{$info.memberid}>" type="hidden"/>
+</form>

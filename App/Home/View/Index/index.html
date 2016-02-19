@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+	<include file="Common:head" />
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/home/index/index.css?__VERSION__" />
+</head>
+
+<body>
+<!-- Following Menu -->
+<div class="ui large top fixed hidden menu">
+	<div class="header item">EASYTP管理系统</div>
+	<div class="ui container">
+		<include file="Common:menu" />
+		<div class="right menu">
+			<div class="item">
+				<a class="ui button" href="<{:U('/login')}>">登录</a>
+			</div>
+			<div class="item">
+				<a class="ui primary button" href="<{:U('/register')}>">注册</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+	<div class="header item">EASYTP管理系统</div>
+	<include file="Common:menu" />
+	<a class="item" href="<{:U('/login')}>">登录</a>
+	<a class="item" href="<{:U('/register')}>">注册</a>
+</div>
+
+
+<!-- Page Contents -->
+<div class="pusher">
+	<div class="ui inverted vertical masthead center aligned segment">
+
+		<div class="ui container">
+			<div class="ui large secondary inverted pointing menu">
+				<a class="toc item">
+					<i class="sidebar icon"></i>
+				</a>
+				<include file="Common:menu" />
+				<div class="right item">
+					<a class="ui inverted button" href="<{:U('/login')}>">登录</a>
+					<a class="ui inverted button" href="<{:U('/register')}>">注册</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui text container">
+			<h1 class="ui inverted header">ThinkPHP + EasyUI开发的管理系统</h1>
+			<h2><i class="wait icon"></i>即将发布</h2>
+			<a class="ui huge primary button" href="<{:U('Admin/Index/index')}>">抢先体验<i class="right arrow icon"></i></a>
+		</div>
+
+	</div>
+
+
+	<div class="ui vertical stripe segment">
+		<div class="ui horizontal divider"><h2>主要特性</h2></div>
+
+		<div class="ui middle aligned stackable grid container">
+
+			<div class="three column row">
+				<div class="column">
+					<b class="ui header">基于EasyUI开发</b>
+					<p>所有的组件都是完全基于EasyUI和支持其所有功能。</p>
+				</div>
+
+				<div class="column">
+					<b class="ui header">PHP, HTML, CSS</b>
+					<p>使用一些热门的开源框架，网上也能找到对应教程。</p>
+				</div>
+
+				<div class="column">
+					<b class="ui header">完美支持iPad</b>
+					<p>所有组件在电脑、平板电脑上运行都很正常。</p>
+				</div>
+			</div>
+
+			<div class="three column row">
+				<div class="column">
+					<b class="ui header">简单易用</b>
+					<p>不再限制运行环境，同时您可以通过复制和粘贴来实现您的项目中的所有设计。</p>
+				</div>
+
+				<div class="column">
+					<b class="ui header">字体图标</b>
+					<p>所有图标都采用Font Awesome字体。</p>
+				</div>
+
+				<div class="column">
+					<b class="ui header">扩展兼容</b>
+					<p>支持插件扩展，同时兼容其他开源系统插件。</p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="ui vertical stripe segment">
+		<div class="ui horizontal divider"><h2>时间轴</h2></div>
+
+		<div class="ui middle aligned stackable grid container">
+
+			<div class="row">
+				<div class="column">
+					<ul class="timeline">
+						<li class="year">
+							<span>2015</span>
+						</li>
+						<li></li>
+						<li class="event">
+							<h3>系统改名为EASYTP管理系统</h3>
+							<time datetime="2015-07-01">2015年07月01日</time>
+							<p>代码全部重构，同时系统改名为EASYTP管理系统，同时更新ThinkPHP版本到3.2.3，更新jQuery EasyUI版本到1.4.3</p>
+							<a class="ui button" href="<{:U('/download')}>"><i class="download icon"></i>下载</a>
+						</li>
+						<li class="event">
+							<h3>正式开放源码</h3>
+							<time datetime="2015-02-28">2015年02月28日</time>
+							<p>将代码托管到github管理，正式对更多用户开放</p>
+							<a class="ui button" href="https://github.com/codepage/app" target="_blank"><i class="github icon"></i>访问</a>
+						</li>
+						<li class="year clear">
+							<span>2014</span>
+						</li>
+						<li></li>
+						<li class="event">
+							<h3>第三个开发版发布</h3>
+							<time datetime="2014-09-25">2014年09月25日</time>
+							<p>后台代码再次优化</p>
+						</li>
+						<li class="event">
+							<h3>第二个开发版发布</h3>
+							<time datetime="2014-05-05">2014年05月05日</time>
+							<p>后台代码重新优化</p>
+						</li>
+						<li class="event">
+							<h3>第一个开发版，同时对外开放</h3>
+							<time datetime="2014-02-08">2014年02月08日</time>
+							<p>后台模块基本上全部完成</p>
+						</li>
+						<li class="clear"></li>
+						<li class="year">
+							<span>2013</span>
+						</li>
+						<li></li>
+						<li class="event">
+							<h3>第三个预览版发布</h3>
+							<time datetime="2013-10-01">2013年10月01日</time>
+							<p>系统改名为app后台管理系统</p>
+						</li>
+						<li class="event">
+							<h3>第二个预览版发布</h3>
+							<time datetime="2013-09-01">2013年09月01日</time>
+							<p>系统改名为wdapp管理系统</p>
+						</li>
+						<li class="event">
+							<h3>第一个预览版发布</h3>
+							<time datetime="2013-08-16">2013年08月16日</time>
+							<p>采用的ThinkPHP3.1.3版本开发，第一个版本发布的时候还没想好名字，也就是当时的后台管理系统</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<include file="Common:footer" />
+</div>
+
+<include file="Common:requirejs" />
+<script type="text/javascript">
+	require(['index/index'], function(M){
+		M.init();
+	});
+</script>
+
+</body>
+
+</html>

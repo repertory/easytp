@@ -1,0 +1,24 @@
+<form class="dialog-form-page">
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<tr>
+			<td width="80">用户名：</td>
+			<td><input type="text" value="<{$info.username}>" readonly disabled style="width: 220px"/></td>
+		</tr>
+		<tr>
+			<td>最后登录时间</td>
+			<td><input type="text" value="<gt name="info.lastlogintime" value="0"><{$info.lastlogintime|date='Y-m-d H:i:s',###}><else/>-</gt>" readonly disabled style="width: 220px"/></td>
+		</tr>
+		<tr>
+			<td>最后登录IP</td>
+			<td><input type="text" value="<{$info.lastloginip|default='-'}>" readonly disabled style="width: 220px"/></td>
+		</tr>
+		<tr>
+			<td>真实姓名</td>
+			<td><input class="easyui-validatebox" type="text" name="info[realname]" value="<{$info.realname}>" data-options="required:true,validType:{length:[2,20]}" style="width:220px" /></td>
+		</tr>
+		<tr>
+			<td>E-mail：</td>
+			<td><input class="easyui-validatebox" type="text" name="info[email]" value="<{$info.email}>" data-options="required:true,validType:['email','length[3,40]','remote[\'<{:U('Index/public_checkEmail', array('default'=>$info['email']))}>\',\'email\']']" style="width:220px" /></td>
+		</tr>
+	</table>
+</form>

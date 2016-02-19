@@ -1,0 +1,32 @@
+<appwizard>
+	<introduction>
+		<name></name>
+		<author>wangdong</author>
+		<icon></icon>
+		<homepage>https://jeasytp.com</homepage>
+		<description><![CDATA[easytp管理系统]]></description>
+	</introduction>
+<platform>
+	<services>
+		<service name="public" params="Public">Storage</service>
+		<service size="2M">Memcache</service>
+		<service>Mysql</service>
+		<service>kvdb</service>
+	</services>
+	<appconfig>
+		<tpl><![CDATA[
+name: <<appname>>
+version: <<version>>
+handle:
+- hostaccess: if(path ~ "^/App") deny "all"
+- hostaccess: if(path ~ "^/Libs") deny "all"
+- hostaccess: if(path ~ "^/config.yaml") deny "all"
+- hostaccess: if(path ~ "^/sae_app_wizard.xml") deny "all"
+- rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+]]></tpl>
+	</appconfig>
+</platform>
+<code>
+	<initScript>install.html</initScript>
+</code>
+</appwizard>

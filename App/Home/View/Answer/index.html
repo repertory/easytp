@@ -1,0 +1,18 @@
+<extend name="Common/base"/>
+
+<block name="header">
+	<link rel="stylesheet" type="text/css" href="__STATIC__/css/home/answer/index.css?__VERSION__" />
+</block>
+
+<block name="footer">
+	<script type="text/javascript">
+		require(['answer/index'], function(M){
+			M.init();
+		});
+	</script>
+</block>
+
+<block name="body">
+	<div class="ui vertical stripe segment" style="min-height: 700px">answer</div>
+</block>
+

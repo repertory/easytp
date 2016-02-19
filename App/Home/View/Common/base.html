@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-CN">
+	<include file="Common:head" />
+	<block name="header"></block>
+</head>
+<body>
+
+<!-- Sidebar Menu -->
+<div class="ui vertical inverted sidebar menu">
+	<div class="header item">EASYTP管理系统</div>
+	<include file="Common:menu" />
+	<a class="item" href="<{:U('/login')}>">登录</a>
+	<a class="item" href="<{:U('/register')}>">注册</a>
+</div>
+
+<!-- Page Contents -->
+<div class="pusher">
+	<!-- Following Menu -->
+	<div class="ui large top fixed menu">
+		<div class="header item"><i class="sidebar icon"></i>EASYTP管理系统</div>
+		<div class="ui container">
+			<include file="Common:menu" />
+			<div class="right menu">
+				<div class="item">
+					<a class="ui button" href="<{:U('/login')}>">登录</a>
+				</div>
+				<div class="item">
+					<a class="ui primary button" href="<{:U('/register')}>">注册</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<block name="body"></block>
+
+	<include file="Common:footer" />
+</div>
+
+<include file="Common:requirejs" />
+<block name="footer"></block>
+</body>
+
+</html>

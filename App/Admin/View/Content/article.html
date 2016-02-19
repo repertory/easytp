@@ -1,0 +1,48 @@
+<!--datagrid列表-->
+<table id="<{:html_id('datagrid')}>" data-menu="#<{:html_id('datagrid-menu')}>" data-toolbar="#<{:html_id('datagrid-toolbar')}>" data-title="<{$title}>" data-url="<{:U(CONTROLLER_NAME . '/' . ACTION_NAME, array('grid'=>'datagrid','catid'=>I('get.catid'),'type'=>I('get.type'),'field'=>I('get.field')))}>">
+	<thead>
+	<tr>
+		<th data-options="field:'id',width:50,sortable:true">ID</th>
+		<th data-options="field:'title',width:200,sortable:true">标题</th>
+		<th data-options="field:'keywords',width:100,sortable:true">关键字</th>
+		<th data-options="field:'author',width:100,sortable:true">作者</th>
+		<th data-options="field:'status',width:100,sortable:true">状态</th>
+		<th data-options="field:'istop',width:100,sortable:true">置顶</th>
+		<th data-options="field:'updatetime',width:100,sortable:true">更新时间</th>
+	</tr>
+	</thead>
+</table>
+
+<!--工具栏-->
+<div id="<{:html_id('datagrid-toolbar')}>">
+	<!--搜索-->
+	<a class="easyui-linkbutton toolbar-search" data-data="[
+		{name:'开始时间',field:'updatetime.begin', editor:{type:'datetimebox',options:{editable:false}},group:'更新时间'},
+		{name:'结束时间',field:'updatetime.end', editor:{type:'datetimebox',options:{editable:false}},group:'更新时间'},
+		{name:'文章ID',field:'id', editor:'numberbox',group:'其他'},
+		{name:'文章标题',field:'title', editor:'text',group:'其他'},
+		{name:'作者',field:'author', editor:'text',group:'其他'},
+		{name:'发布状态',field:'status', editor:{type:'combobox',options:{editable:false,panelHeight:'auto',data:[{value:1,text:'发布'},{value:0,text:'未发布'}]}},group:'其他'},
+		{name:'是否置顶',field:'istop', editor:{type:'combobox',options:{editable:false,panelHeight:'auto',data:[{value:1,text:'置顶'},{value:0,text:'未置顶'}]}},group:'其他'}
+	]" data-close="true" data-group="true" data-width="400" data-height="335" iconCls="fa fa-search" plain="true">搜索</a>
+
+	<!--操作项-->
+	<foreach name="toolbars" item="li">
+		<a class="easyui-linkbutton toolbar-action" data-action="<{$li.a}>" iconCls="<{$li.icon}>" plain="true" data-href="<{:U($li['c'] . '/' . $li['a'] . '?' . $li['data'], array('menuid'=>I('get.menuid'),'catid'=>I('get.catid'),'type'=>I('get.type'),'field'=>I('get.field')))}>"><{$li.name}></a>
+	</foreach>
+</div>
+
+<!--右键菜单-->
+<if condition="count($toolbars) gt 0">
+	<div id="<{:html_id('datagrid-menu')}>" class="easyui-menu">
+		<foreach name="toolbars" item="li">
+			<div class="menu-action" data-action="<{$li.a}>" data-href="<{:U($li['c'] . '/' . $li['a'] . '?' . $li['data'], array('menuid'=>I('get.menuid'),'catid'=>I('get.catid'),'type'=>I('get.type'),'field'=>I('get.field')))}>" iconCls="<{$li.icon}>"><{$li.name}></div>
+		</foreach>
+	</div>
+</if>
+
+<script type="text/javascript">
+	require(['content/article'], function(module){
+		module.init("#<{:html_id('datagrid')}>");
+	});
+</script>

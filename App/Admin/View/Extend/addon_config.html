@@ -1,0 +1,120 @@
+<form class="dialog-form-page" style="overflow-x: hidden">
+	<table cellspacing="0" cellpadding="0" border="0" width="100%">
+		<empty name="custom_config">
+			<foreach name="data['config']" item="form" key="o_key">
+				<tr>
+					<eq name="form.type" value="group">
+						<td colspan="2" style="margin:0;padding:0">
+					<else/>
+						<td width="80"><{$form.title|default=''}></td>
+						<td>
+					</eq>
+						<switch name="form.type">
+							<case value="text">
+								<input type="text" name="config[<{$o_key}>]" value="<{$form.value}>" style="width:220px">
+							</case>
+							<case value="password">
+								<input type="password" name="config[<{$o_key}>]" value="<{$form.value}>" style="width:220px">
+							</case>
+							<case value="hidden">
+								<input type="hidden" name="config[<{$o_key}>]" value="<{$form.value}>" style="width:220px">
+							</case>
+							<case value="radio">
+								<foreach name="form.options" item="opt" key="opt_k">
+									<label class="radio">
+										<input type="radio" name="config[<{$o_key}>]" value="<{$opt_k}>" <eq name="form.value" value="$opt_k"> checked</eq>><{$opt}>
+									</label>
+								</foreach>
+							</case>
+							<case value="checkbox">
+								<foreach name="form.options" item="opt" key="opt_k">
+									<label class="checkbox">
+										<php>
+											is_null($form["value"]) && $form["value"] = array();
+										</php>
+										<input type="checkbox" name="config[<{$o_key}>][]" value="<{$opt_k}>" <in name="opt_k" value="$form.value"> checked</in>><{$opt}>
+									</label>
+								</foreach>
+							</case>
+							<case value="select">
+								<select class="easyui-combobox" data-options="editable:false,panelHeight:'auto'" name="config[<{$o_key}>]" style="width:230px;height:24px">
+									<foreach name="form.options" item="opt" key="opt_k">
+										<option value="<{$opt_k}>" <eq name="form.value" value="$opt_k"> selected</eq>><{$opt}></option>
+									</foreach>
+								</select>
+							</case>
+							<case value="textarea">
+								<textarea name="config[<{$o_key}>]" style="width:220px;height:50px;font-size:12px"><{$form.value}></textarea>
+							</case>
+							<case value="group">
+								<div class="easyui-tabs" data-options="fit:false,border:false,plain:true" style="width:100%;">
+									<volist name="form.options" id="li">
+										<div title="<{$li.title}>">
+											<table cellspacing="0" cellpadding="0" border="0" width="100%" style="border-bottom: none">
+												<foreach name="li['options']" item="tab_form" key="o_tab_key">
+
+													<present name="tab_form.tip">
+														<tr>
+															<td colspan="2" style="color:#808080">提示：<{$tab_form.tip}></td>
+														</tr>
+													</present>
+													<tr>
+														<td width="80"><{$tab_form.title|default=''}></td>
+														<td>
+															<switch name="tab_form.type">
+																<case value="text">
+																	<input type="text" name="config[<{$o_tab_key}>]" value="<{$tab_form.value}>" style="width:220px">
+																</case>
+																<case value="password">
+																	<input type="password" name="config[<{$o_tab_key}>]" value="<{$tab_form.value}>" style="width:220px">
+																</case>
+																<case value="hidden">
+																	<input type="hidden" name="config[<{$o_tab_key}>]" value="<{$tab_form.value}>" style="width:220px">
+																</case>
+																<case value="radio">
+																	<foreach name="tab_form.options" item="opt" key="opt_k">
+																		<label class="radio">
+																			<input type="radio" name="config[<{$o_tab_key}>]" value="<{$opt_k}>" <eq name="tab_form.value" value="$opt_k"> checked</eq>><{$opt}>
+																		</label>
+																	</foreach>
+																</case>
+																<case value="checkbox">
+																	<foreach name="tab_form.options" item="opt" key="opt_k">
+																		<label class="checkbox">
+																			<php> is_null($tab_form["value"]) && $tab_form["value"] = array();</php>
+																			<input type="checkbox" name="config[<{$o_tab_key}>][]" value="<{$opt_k}>" <in name="opt_k" value="$tab_form.value"> checked</in>><{$opt}>
+																		</label>
+																	</foreach>
+																</case>
+																<case value="select">
+																	<select name="config[<{$o_tab_key}>]">
+																		<foreach name="tab_form.options" item="opt" key="opt_k">
+																			<option value="<{$opt_k}>" <eq name="tab_form.value" value="$opt_k"> selected</eq>><{$opt}></option>
+																		</foreach>
+																	</select>
+																</case>
+																<case value="textarea">
+																	<textarea name="config[<{$o_tab_key}>]"><{$tab_form.value}></textarea>
+																</case>
+															</switch>
+														</td>
+													</tr>
+												</foreach>
+											</table>
+										</div>
+									</volist>
+								</div>
+							</case>
+						</switch>
+					</td>
+				</tr>
+			</foreach>
+
+		<else />
+			<present name="custom_config">
+				<{$custom_config}>
+			</present>
+		</empty>
+	</table>
+	<input type="hidden" name="id" value="<{$id}>" readonly>
+</form>

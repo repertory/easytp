@@ -8,7 +8,7 @@ define('ADDON_PATH', './Addons/');         //插件目录
 define('UPLOAD_PATH', './Public/upload/'); //文件上传根目录
 
 /* 网址信息 */
-define('HTTP_REFERER', ($_SERVER['HTTP_REFERER']) ?: '') ;                    //来源页面
+define('HTTP_REFERER', (!empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '')); //来源页面
 define('SCRIPT_DIR', rtrim(dirname($_SERVER['SCRIPT_NAME'] ?: ''), '\/\\') ); //相对地址
 if(!empty($_SERVER['HTTP_HOST'])){
 	define('SITE_URL', 'http://' . $_SERVER['HTTP_HOST'] . SCRIPT_DIR);       //完整地址

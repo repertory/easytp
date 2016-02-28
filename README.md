@@ -2,7 +2,7 @@
 官方社区 http://jeasytp.com (即将上线)
 
 # 演示地址
-http://easytp.sinaapp.com
+http://easytp.applinzi.com
 
 # 代码托管
 | 名称   | 地址                                      |

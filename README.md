@@ -42,3 +42,7 @@
 - [x] 安装密码是什么？
 
 > **答**：安装密码为：`jeasytp.com`
+
+- [x] 可以在SAE环境上运行吗？
+
+> **答**：1.SAE上新建应用选择导入代码即可直接运行；2.其他方式则必须先手动开启storage(命名为public) memcache kvdb mysql(共享型)

@@ -45,4 +45,4 @@
 
 - [x] 可以在SAE环境上运行吗？
 
-> **答**：1.SAE上新建应用选择导入代码即可直接运行；2.其他方式则必须先手动开启storage(命名为public) memcache kvdb mysql(共享型)
+> **答**：两种方式部署：1.SAE上新建应用选择导入代码即可直接运行；2.其他方式则必须先手动开启`storage`(命名为public) `memcache` `kvdb` `mysql`(共享型)

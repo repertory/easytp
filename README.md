@@ -1,5 +1,4 @@
 # easytp
-官方社区 http://jeasytp.com (已上线)
 
 ### 演示地址
 [SAE平台测试地址](http://easytp.applinzi.com)

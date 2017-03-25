@@ -3,8 +3,8 @@
 ### 代码托管
 | 名称   | 地址                                      |
 | ------ | ----------------------------------------- |
-| github |https://github.com/repertory/easytp.git       |
-| aliyun |https://code.aliyun.com/wangdong/easytp.git|
+| github |https://github.com/repertory/easytp.git |
+| aliyun |https://code.aliyun.com/wangdong/easytp.git |
 
 ---
 

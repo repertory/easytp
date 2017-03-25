@@ -47,10 +47,11 @@
 - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
 ```
 
-- [x] nginx伪静态配置
+---
 
-> **答**： 配置如下：
-> ```
+## nginx伪静态配置
+
+```
 location / {
       root   /var/www/html;
       index  index.html index.htm index.php;

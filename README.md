@@ -43,7 +43,8 @@
 > 1.SAE上新建应用选择导入代码即可直接运行（推荐使用）；
 > 2.其他方式则必须先手动开启`storage`(命名为public) `memcache` `kvdb` `mysql`(共享型)
 > 然后修改文件config.yaml，增加rewrite规则
-> ```yaml
+
+```yaml
 - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
 ```
 

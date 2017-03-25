@@ -1,14 +1,9 @@
 # easytp
 
-### 演示地址
-[SAE平台测试地址](http://easytp.applinzi.com)
-
----
-
 ### 代码托管
 | 名称   | 地址                                      |
 | ------ | ----------------------------------------- |
-| github |https://github.com/easytp/easytp.git       |
+| github |https://github.com/repertory/easytp.git       |
 | aliyun |https://code.aliyun.com/wangdong/easytp.git|
 
 ---
@@ -50,4 +45,18 @@
 > 然后修改文件config.yaml，增加rewrite规则
 > ```yaml
 - rewrite: if(!is_dir() && !is_file() && path~"^(.*)$") goto "index.php/$1"
+```
+
+- [x] nginx伪静态配置
+
+> **答**： 配置如下：
+> ```
+location / {
+      root   /var/www/html;
+      index  index.html index.htm index.php;
+
+      if (!-e $request_filename){
+          rewrite ^/(.*)$ /index.php?s=/$1 last; #rewrite
+      }
+  }
 ```

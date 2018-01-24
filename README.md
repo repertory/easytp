@@ -35,7 +35,7 @@
 
 - [x] 安装密码是什么？
 
-> **答**：安装密码为：`jeasytp.com`
+> **答**：安装密码为：`wangdong.io`
 
 - [x] 可以在SAE环境上运行吗？
 
@@ -49,6 +49,21 @@
 ```
 
 ---
+
+## docker环境
+
+> 随着软件更新，之前的环境可能会碰到许多问题
+
+**启动方法**
+
+```shell
+docker-compose up -d
+```
+
+**配置参数**
+
+- DB_HOST = mysql
+- REDIS_HOST = redis
 
 ## nginx伪静态配置
 

@@ -1,0 +1,42 @@
+version: '2'
+services:
+  nginx:
+    image: nginx:alpine
+    restart: always
+    volumes:
+      - ./docker/Shanghai:/etc/localtime
+      - ./docker/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./#Data/nginx:/var/log/nginx
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    depends_on:
+      - php-fpm
+  php-fpm:
+    image: registry.cn-hangzhou.aliyuncs.com/wangdong/php:5.6
+    restart: always
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./docker/Shanghai:/etc/localtime
+      - .:/var/www/html
+  mysql:
+    image: mysql:5.5
+    restart: always
+    environment:
+#      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: easytp
+    volumes:
+      - ./docker/Shanghai:/etc/localtime
+      - ./#Data/mysql:/var/lib/mysql
+  redis:
+    image: redis:alpine
+    restart: always
+    volumes:
+      - ./docker/Shanghai:/etc/localtime
+
+networks:
+  default:
+    driver: bridge

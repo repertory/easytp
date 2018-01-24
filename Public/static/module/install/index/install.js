@@ -10,7 +10,7 @@ define(function(require, exports, module){
 				var url = $(this).data('url');
 				url += (url.indexOf('?') == -1 ? '?' : '&') + new Date().getTime();
 				myApp.modalPassword('请输入安装密码:', function(password) {
-					if(md5(md5(password)) == 'feac5fa2c3a50e4dab7cfccd8b3782d5') view.router.load({url:url});
+					if(md5(md5(password)) == 'b79403fdb4a62807ce98f13dddb23b6b') view.router.load({url:url});
 					else myApp.alert('密码错误', '系统提示');
 				});
 
